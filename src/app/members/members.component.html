@@ -1,0 +1,24 @@
+<h2>社員一覧</h2>
+<!-- mockデータを指定したmembersプロパティを使って画面に社員一覧(mockデータ)を表示する -->
+<div>
+    <label>社員名:
+        <!-- #memberNameは、Angularのテンプレート変数の書き方で、memberNameという名前でinputタグを直接参照できる -->
+        <input type="text" #memberName>
+    </label>
+    <!-- ; で繋げることで、click操作をした時の処理を複数書くことができる
+    ここでは、追加されてその後はinputタグが空白になる -->
+    <button (click)="add(memberName.value); memberName.value = ''">追加</button>
+</div>
+
+<ul class="members">
+    <!-- membersプロパティを一つずつmember変数に取り出していく -->
+    <!-- li項目をクリックした際にonSelectメソッドが実行される -->
+    <!-- クリックした時にonSelectメソッドが呼ばれるようにクリックイベントも記載 -->
+    <!-- [class.selected]=のあとの""で囲まれた部分がtrueだったらselectedクラスが設定される→選択された状態の見た目になる -->
+    <li *ngFor="let member of members">
+        <a routerLink="/detail/{{ member.id }}">
+            <span class="badge">{{ member.id }}</span> {{ member.name }}
+        </a>
+        <button class="delete" title="社員の削除" (click)="delete(member)">X</button>
+    </li>
+</ul>

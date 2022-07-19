@@ -1,0 +1,19 @@
+<!-- memberの詳細表示の部分を一つのコンポーネントとして切り出す(分割) -->
+<!-- tsファイルで追加したプロパティを展開 -->
+<!-- オブジェクトデータでは、.で繋げることでデータを参照できる -->
+<!-- クリックして選択されたメンバーのIDと名前を表示する -->
+<!-- selectedMemberが選択されていない時には非表示になる -->
+<div *ngIf="member">
+    <h2>{{ member.name }}</h2>
+    <div><span>id:</span>{{ member.id }}</div>
+    <!-- <div><span>name:</span>{{ member.name }}</div> -->
+    <!-- 決め打ちで名前を入れていたものをデータを編集可能にするを以下 -->
+    <div>
+        <label>名前：
+            <!-- ngModelでmembersコンポーネントのmemberオブジェクトのnameプロパティを編集可能にする -->
+            <input type="text" [(ngModel)]="member.name" placeholder="名前">
+        </label>
+    </div> 
+    <button (click)="goBack()">戻る</button>
+    <button (click)="save()">保存</button>
+</div>

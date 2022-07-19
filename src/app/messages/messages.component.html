@@ -1,0 +1,10 @@
+<!-- messageServiceのmessage配列にデータがある場合という条件を指定 -->
+<div *ngIf="messageService.messages.length">
+    <h2>メッセージログ</h2>
+    <!-- クリアのボタンを押したらmessageが消えるようにする処理 -->
+    <button class="clear" (click)="messageService.clear()">クリア</button>
+    <!-- メッセージを全て表示 -->
+    <div *ngFor="let message of messageService.messages">
+        {{ message }}
+    </div>
+</div>
